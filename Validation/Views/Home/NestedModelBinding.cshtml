@@ -1,0 +1,21 @@
+﻿@model Models.NestedVM
+
+@{
+    ViewBag.Title = "View1";
+}
+
+<h2>View1</h2>
+
+@{
+var viewData = new ViewDataDictionary(ViewData) { TemplateInfo = new System.Web.Mvc.TemplateInfo { HtmlFieldPrefix = "ContactVM" }};
+}
+
+@Html.Partial("~/Views/Home/_NestedContact.cshtml", Model.ContactVM, viewData);
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

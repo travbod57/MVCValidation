@@ -1,0 +1,32 @@
+﻿@model Models.Book
+
+@using (Ajax.BeginForm("Book", "Home", new AjaxOptions() { HttpMethod = "Post", OnBegin = "ajaxFormValidation.Begin(xhr, status, 'bookForm')", OnSuccess = "ajaxFormValidation.Success(data, status, xhr, 'bookForm')" }, new { id = "bookForm" }))
+{
+   
+    @Html.ValidationSummaryAJAX();
+    
+    <fieldset>
+        <legend>Person</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.AJAXValidationFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Author)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Author)
+            @Html.AJAXValidationFor(model => model.Author)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+            @Html.ClearButtonAJAX()
+        </p>
+    </fieldset>
+}

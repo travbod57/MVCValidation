@@ -1,0 +1,33 @@
+﻿@model Models.ContactVM
+
+@using (Ajax.BeginForm("Index", "NestedModel", new AjaxOptions() { HttpMethod = "Post" })) {
+    
+    <ul id="validation">
+
+    </ul>
+    
+    <fieldset>
+        <legend>PersonVM</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.CustomValidationFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SecondName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SecondName)
+            @Html.CustomValidationFor(model => model.SecondName)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+            <input type="button" value="Clear" onclick="Clear()" />
+        </p>
+    </fieldset>
+}
